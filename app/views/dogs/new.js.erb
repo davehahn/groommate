@@ -1,0 +1,17 @@
+$('a#newDogLink').hide();
+$('#dogList').hide('scale',{},400, function(){
+  $('#dogList').html("<%= escape_javascript(render "form") %>");
+  $('#dogList').show('scale',{},400);  
+  $('#new_dog').submit(function(){
+    $(this).ajaxSubmit();
+    return false;
+  });
+  $('#cancelEdit').bind('click', function (){
+  $('#dogList').hide('scale',{},400, function(){
+    $('#dogList').html("<%= escape_javascript(render "customers/dog_list") %>");
+    $('#dogList').show('scale',{},400);
+      $('a#newDogLink').show();
+    });
+  });
+$('.jqButton').button();
+});

@@ -1,0 +1,18 @@
+$('#dialogBox').html("<%= escape_javascript(render "customers/form") %> ");
+
+$.fx.speeds._default = 400;
+
+  $("#dialogBox").dialog({
+    autoOpen: true,
+    height:450,
+    width: 600,
+    modal: true,
+    title: "New Customer" ,
+    show : 'scale',
+    hide :'scale'
+  });
+  $('#new_customer').submit(function(){
+    $(this).ajaxSubmit();
+    return false;
+  });
+  $('.jqButton').button();

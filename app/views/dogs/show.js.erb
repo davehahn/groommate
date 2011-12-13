@@ -1,0 +1,7 @@
+$('#dialogContent').hide('fade', {}, 300, function (){
+  $('#dialogContent').html("<%= escape_javascript(render "show") %>");
+  $('.jqButton').button();
+  $('#dialogContent').show('fade', {}, 300);
+})
+
+

@@ -1,0 +1,41 @@
+<div class="heading">
+<div id="hcontainer2">
+  <div id="hcontainer1">
+    <div id="title"><span style="position:relative;top:5px;">Dogs</span></div>
+    <div id="main_title">
+      <span style="position:relative;float:right;bottom:14px;padding-right:10px;">
+        <% form_tag dogs_path, :method => 'get', :id => 'searchForm' do %>
+          <p>
+            <%= hidden_field_tag :direction, params[:direction] %>
+            <%= hidden_field_tag :sort, params[:sort] %>
+            <%= text_field_tag :search, params[:search], :id => "searchField", :style=> "height:12px;" %>
+            <%= submit_tag "Search", :name => nil, :type => :image, :src => "/images/search.png", :style => "position:relative;top:6px;left:4px" %>
+          </p>
+        <% end %>
+      </span>
+    </div>
+  </div>
+</div>
+</div>
+<br />
+<table cellpadding="0" cellspacing="0" class="fancyTable">
+  <tr>
+    <th>Customer</th>
+    <th>Name</th>
+    <th>Breed</th>
+    <th>Comments</th>
+    
+  </tr>
+
+<% @dogs.each do |dog| %>
+  <tr>
+    <td><%= dog.customer_id %></td>
+    <td><%= dog.name %></td>
+    <td><%= dog.breed %></td>
+    <td><%= dog.comments %></td>
+    
+  </tr>
+<% end %>
+</table>
+
+

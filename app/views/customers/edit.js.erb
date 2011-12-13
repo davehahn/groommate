@@ -1,0 +1,6 @@
+$('#dialogContent').html("<%= escape_javascript(render "customers/form") %>");
+  $('#edit_customer_<%=@customer.id%>').submit(function(){
+    $(this).ajaxSubmit();
+    return false;
+  });
+  $('.jqButton').button();

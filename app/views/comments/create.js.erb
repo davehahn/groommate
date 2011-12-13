@@ -1,0 +1,23 @@
+<% if @comment.errors.empty? %>
+$('a#newCommentLink').show();
+$('#comments').hide('blind',{},400, function(){
+  $('#comments').html("<%= escape_javascript(render "dogs/comments") %>");
+  $('#comments').show('blind',{},400);
+  });
+<% else %> 
+    $('#comments').html("<%= escape_javascript(render "comments/form") %>");
+      $('#new_comment').submit(function(){
+        $(this).ajaxSubmit();
+        return false;
+      });
+    $('#cancelLink').bind('click', function (){
+  $('#comments').hide('blind',{},400, function(){
+    $('#comments').html("<%= escape_javascript(render "dogs/comments") %>");
+    $('#comments').show('blind',{},400);
+      $('a#newCommentLink').show();
+    });
+  });
+  $('.jqButton').button();
+ 
+<% end %>
+  

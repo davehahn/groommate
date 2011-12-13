@@ -1,0 +1,154 @@
+
+#sideContainer1 {
+    float:left;
+    clear:left;
+
+    width:100%;
+    position:relative;
+    right:60%;
+
+
+}
+
+
+#sidecontainer2 {
+    clear:left;
+    float:left;
+    width:100%;
+    overflow:hidden;
+    /* center background colour */ /* column 2 background colour */
+    position:relative;
+
+}
+
+
+#rightNav {
+    /** float:right;
+    width:85%; **/
+    float:left;
+    width:40%;
+    position:relative;
+    left:60%;
+    min-height: 700px;
+    height: auto !important;
+    height: 700px;
+    background-color: #4a8e4a;   
+}
+
+
+#leftNav {
+    min-height: 700px;
+    height: auto !important;
+    height: 700px;
+    color: black;
+    float:left;
+    width:100%; /* was 60% */
+    position:relative;
+    /*left:60%; */
+    background:#054D05; /* column 1 background colour SIDE BAR*/
+}
+
+ul.leftSideNav {
+    margin-top:30px;;
+    padding:0px;
+    list-style-position: inside;
+    list-style-type: none;
+}
+
+ul.leftSideNav li  {
+    margin-bottom:3px;
+    text-align:center;
+    width: 100%;
+    margin-right:3px;
+    height:30px !important;
+    background:url('../images/navLink1BG.png') repeat-x;
+    border-right:4px solid #054D05;
+    border-top:1px solid #ccc;
+    border-bottom:1px solid #ccc;
+    
+}
+
+ul.leftSideNav li.current, ul.leftSideNav li.current:hover  {
+    text-align:center;
+    width: 100%;
+    margin-right:3px;
+    height:30px !important;
+    background:#68ae68  url('../images/navArrow.png') no-repeat right; /* was navArrow1.png*/
+    opacity:1 !important;
+     -moz-box-shadow:none !important;
+    -webkit-box-shadow:none !important;
+    box-shadow:none !important;
+}
+
+ul.leftSideNav li a {
+    text-decoration: none;
+    color:white;
+    position:relative;
+    top:5px;
+}
+ul.leftSideNav li a:hover{
+    background: transparent;
+}
+
+ul.leftSideNav li:hover {
+    background:#5c9a5c;
+    opacity:0.5;   
+}
+ul.leftSideNav li:hover a {
+    color:white;
+}
+
+
+ul.rightSideNav {
+    margin-top:30px;
+    padding:0px;
+    list-style-position: inside;
+    list-style-type: none;
+}
+
+ul.rightSideNav li  {
+   
+    text-align:center;
+    width: 100%;
+    margin-right:3px;
+    height:30px !important;
+    background:url('../images/navLink2BG.png') repeat-x;
+    border-left:1px solid #ace3ac;
+    
+    text-align:center;
+    
+}
+
+ul.rightSideNav li.current, ul.rightSideNav li.current:hover {
+    text-align:center;
+    width: 100%;
+    margin-right:3px;
+    height:30px !important;
+    background:#ace3ac url('../images/navArrow2.png') no-repeat right;
+    opacity:1 !important;
+    -moz-box-shadow:none !important;
+    -webkit-box-shadow:none !important;
+    box-shadow:none !important;
+}
+
+
+
+ul.rightSideNav li a {
+    text-decoration: none;
+    color:#054D05;
+    position:relative;
+    top:5px;
+}
+ul.rightSideNav li a:hover{
+    background: transparent;
+}
+
+ul.rightSideNav li:hover {
+    background:#dcffdc;
+    opacity:0.5;
+    color:white;
+}
+
+ul.rightSideNav li:hover a{
+    color:black;
+}

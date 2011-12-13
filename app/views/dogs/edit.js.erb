@@ -1,0 +1,18 @@
+
+$('a#editLink').hide();
+$('#dogDetails').hide('drop',{},400, function(){
+  $('#dogDetails').html("<%= escape_javascript(render "form") %>");
+  $('#dogDetails').show('scale',{},400);
+  $('#edit_dog_<%= @dog.id %>').submit(function(){
+    $(this).ajaxSubmit();
+    return false;
+  });
+  $('#cancelEdit').bind('click', function (){
+  $('#dogDetails').hide('scale',{},400, function(){
+    $('#dogDetails').html("<h2 style='text-align:center'><%= @dog.name %> - <%= @dog.breed %></h2>");
+    $('#dogDetails').show('drop',{},400);
+      $('a#editLink').show();
+    });
+  });
+$('.jqButton').button();
+});

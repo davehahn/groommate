@@ -1,0 +1,10 @@
+<% if @customer.errors.empty? %>
+window.location.replace("<%= customers_path %> ");
+<% else %>
+$('#dialogBox').html("<%= escape_javascript(render "form") %>");
+$('#new_customer').submit(function(){
+    $(this).ajaxSubmit();
+    return false;
+  });
+  $('.jqButton').button();
+<% end %>

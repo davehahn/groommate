@@ -1,0 +1,25 @@
+if ($('#comments').length != 0 ){
+  $('#dialogContent').hide('fade', {}, 300, function (){
+  $('#dialogContent').html("<%= escape_javascript(render "customers/show") %>");
+  $('.jqButton').button();
+  $('#dialogContent').show('fade', {}, 300);
+})
+}else{
+$('#dialogBox').html("<%= escape_javascript(render "customers/show") %> ");
+<% height =  @customer.dogs.size > 9 ? ((@customer.dogs.size - 9) * 19) + 450 : 450%>
+$.fx.speeds._default = 400;
+
+  $("#dialogBox").dialog({
+    autoOpen: true,
+    height:<%= height %> ,
+    width: 650,
+    modal: true,
+    title: "Customer Details" ,
+    show : 'scale',
+    hide :'scale'
+  });
+
+$('.jqButton').button();
+
+
+}

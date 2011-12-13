@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  dog_id: 1
+  start_at: 2011-12-10 18:26:32
+  end_at: 2011-12-10 18:26:32
+
+two:
+  dog_id: 1
+  start_at: 2011-12-10 18:26:32
+  end_at: 2011-12-10 18:26:32

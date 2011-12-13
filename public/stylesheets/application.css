@@ -1,0 +1,345 @@
+body { background-color: #fff; color: #333; }
+
+body, p, ol, ul, td {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size:   13px;
+  line-height: 18px;
+}
+
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px;
+}
+
+a { color: #000; }
+a:visited { color: #666; }
+a:hover { color: #fff; background-color:#000; }
+
+div#banner{
+    text-align:center;
+    width:100%;
+    height:75px;
+    color:blue;
+    background:#dcffdc;   
+    -webkit-border-radius:15px 15px 0 0;
+    -moz-border-radius:15px 15px 0 0;
+    border-radius:15px 15px 0 0;
+    border-bottom:6px solid #054d05;
+  }
+
+div#banner img {
+    margin:auto;
+    position:relative;
+    top:10px;
+}
+
+/***** Ajax indicator ******/
+#ajax-indicator {
+    position: absolute; /* fixed not supported by IE */
+    background-color:transparent;
+
+    top:35%;
+    left:40%;
+    width:20%;
+    font-weight:bold;
+    text-align:center;
+    padding:0.6em;
+    z-index:100;
+}
+
+#container1 {
+    float:left;
+    clear:left;
+
+    width:100%;
+    position:relative;
+    right:90%;
+
+
+}
+
+
+#container2 {
+    clear:left;
+    float:left;
+    width:100%;
+    overflow:hidden;
+    /* center background colour */ /* column 2 background colour */
+    position:relative;
+
+}
+
+
+#main {
+    /** float:right;
+    width:85%; **/
+    float:left;
+    width:90%;
+    position:relative;
+    left:90%;
+    min-height: 700px;
+    height: auto !important;
+    height: 700px;
+    background-color: #fff;
+   
+    background-position: center;
+    background-repeat:no-repeat;
+    -moz-border-radius:9px;
+    -webkit-border-radius:9px;
+    border-radius:9px;
+}
+
+
+#side {
+    min-height: 700px;
+    height: auto !important;
+    height: 700px;
+    color: black;
+    float:left;
+    width:10%;
+    position:relative;
+    left:90%;
+    background:#054D05; /* column 1 background colour SIDE BAR*/
+    margin-top:15px;
+}
+
+#mainContent {
+    margin-top:15px;
+}
+
+div.field, div.actions {
+  margin-bottom: 10px;
+}
+
+#notice {
+  color: green;
+}
+
+
+/** MODEL VALIDATION ERRORS **/
+
+.field_with_errors {
+  display: inline;
+}
+
+.field_with_errors .message {
+  color:#D00;
+  padding-left:4px;
+  font-size:12px;
+  font-style: italic;
+}
+
+div.field_with_errors input,
+div.field_with_errors textarea
+{
+    border:1px solid #B20000 !important;
+    -moz-box-shadow: 4px 4px 5px #B20000;
+    box-shadow: 4px 4px 5px #B20000;
+    -webkit-box-shadow: 4px 4px 5px #B20000;
+    -moz-border-radius:4px;
+    -webkit-border-radius:4px;
+    border-radius:4px;
+}
+
+#error_explanation {
+  display:none;
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+
+#error_explanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  margin-bottom: 0px;
+  background-color: #c00;
+  color: #fff;
+}
+
+#error_explanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+
+/** Fancy Table **/
+
+.heading {
+     background-color:#dcffdc ;
+    width:98%;
+    margin:auto;
+    height:30px;
+    border-bottom:6px solid #054d05 ;
+    -moz-border-radius: 6px 6px 0px 0px;
+    -webkit-border-radius: 6px 6px 0px 0px;
+    border-radius: 6px 6px 0px 0px;
+     text-align:center;
+     box-shadow:0px 5px 8px #888;
+     -webkit-box-shadow:0px 5px 8px #888;
+     -moz-box-shadow:0px 5px 8px #888;
+}
+
+#hcontainer1 {
+    float:left;
+    clear:left;
+    width:100%;
+    position:relative;
+    right:66%;
+}
+
+
+#hcontainer2 {
+    clear:left;
+    float:left;
+    width:100%;
+    overflow:hidden;
+    /* center background colour */ /* column 2 background colour */
+    position:relative;
+
+}
+
+
+#main_title {
+    /** float:right;
+    width:85%; **/
+    float:left;
+    width:66%;
+    position:relative;
+    left:66%;
+    height: 30px;
+    background-color:#dcffdc;
+   -moz-border-radius: 0px 6px 0px 0px;
+    -webkit-border-radius: 0px 6px 0px 0px;
+    border-radius: 0px 6px 0px 0px;
+}
+
+
+#title {
+    font-size: 28px;
+    font-weight: bold;
+    color: #fff !important;
+    height: 30px;
+
+    float:left;
+    width:34%;
+    position:relative;
+    left:66%;
+    -moz-border-radius: 0px 30px 0px 0px;
+    -webkit-border-radius: 0px 30px 0px 0px;
+    border-radius: 0px 30px 0px 0px;
+    background:#054d05 }
+
+
+table.fancyTable {
+  
+  width:98%;
+  margin:auto;
+  text-align: center;
+}
+
+
+table.fancyTable th {
+    font-weight:bold;
+    color:white;
+    border-right:solid 1px #dcffdc;
+    border-top:solid 1px #dcffdc;
+    border-bottom:solid 1px #dcffdc;
+    text-align:center;
+    height:25px;
+}
+
+table.fancyTable tr th{
+    background:#054d05 ;
+}
+
+table.fancyTable tr.clickableRow:hover, table.fancyTable tr.clickableRow:hover td {
+    background:#ffffcc;
+    border-right:solid 1px #ffffcc! important;
+    cursor:pointer;
+}
+
+table.fancyTable tr.active:hover, table.fancyTable tr.active:hover td {
+    background:#ffff99;
+    border-right:solid 1px #ffff99! important;
+}
+
+table.fancyTable td {
+    border-right:solid 1px #dcffdc;   
+    border-bottom:solid 1px #dcffdc;
+    padding-left:3px;
+}
+table.fancyTable tr.odd {
+    background: #BDDCBD;
+}
+
+table.fancyTable tr.even {
+    background: #D3E8D3;
+}
+
+table.fancyTable tr.active {
+    background:#ffff99;
+}
+
+table.fancyTable tr.active td {
+    border-right:solid 1px #ffff99;
+    border-top:solid 1px #ffff66;
+    border-bottom:solid 1px #ffff66;
+}
+table.fancyTable td.navRow {
+    border-left:solid 1px #dcffdc;
+    background:#becfbc ;
+}
+
+table.fancyTable td.navRow img {
+    position:relative;
+    top:2px;
+}
+
+.fancyTable a {
+    text-decoration: none;
+    color:white;
+}
+
+.fancyTable td a {
+    text-decoration: none;
+    color:#333333;
+}
+
+.fancyTable td.navRow a:hover{
+    background:#becfbc;
+}
+
+.fancyTable a.current {
+  padding-right: 18px;
+  background-repeat: no-repeat;
+  background-position: right center;
+
+ }
+
+.fancyTable th a.asc {
+   background-image: url(/images/arrow_up.png);
+ }
+
+.fancyTable th a.desc {
+   background-image: url(/images/arrow_down.png);
+ }
+
+ div.buttonContainer {
+    border-top:1px solid #888;
+    width:95%;
+    margin:auto auto 10px auto;
+    padding-top:8px;
+    position:absolute;
+    bottom:0;
+}
+
+div.buttonRow {
+    float:right;
+    padding-right:8px
+}

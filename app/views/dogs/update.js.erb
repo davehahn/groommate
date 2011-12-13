@@ -1,0 +1,19 @@
+<% if @dog.errors.empty? %>
+  $('#dogDetails').html("<h2 style='text-align:center'><%= @dog.name %> - <%= @dog.breed %></h2>");
+  $('a#editLink').show();
+<% else %>
+  $('#dogDetails').html("<%= escape_javascript(render "form") %>");
+  $('#edit_dog_<%= @dog.id %>').submit(function(){
+           $(this).ajaxSubmit();
+           return false;
+           });
+  <% @dog.reload %>
+  $('#cancelEdit').bind('click', function (){
+  $('#dogDetails').hide('scale',{},400, function(){
+    $('#dogDetails').html("<h2 style='text-align:center'><%= @dog.name %> - <%= @dog.breed %></h2>");
+    $('#dogDetails').show('drop',{},400);
+      $('a#editLink').show();
+    });
+  });
+  $('.jqButton').button();
+<% end %>

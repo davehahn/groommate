@@ -1,0 +1,16 @@
+<% if @dog.errors.empty? %>
+  $('#dogList').html("<%= escape_javascript(render "customers/dog_list") %>");
+  $('a#newDogLink').show();
+  $('.jqButton').button();
+<% else %>
+  $('#dogList').html("<%= escape_javascript(render "form") %>");
+  $('#new_dog').submit(function(){
+           $(this).ajaxSubmit();
+           return false;
+           });
+  $('#cancelEdit').bind('click', function (){
+  $('#dogList').html("<%= escape_javascript(render "customers/dog_list") %>");
+  $('a#newDogLink').show();
+});
+  $('.jqButton').button();
+<% end %>

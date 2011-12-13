@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DogGroomer</title>
+  <%= stylesheet_link_tag :all %>
+  <%= javascript_include_tag :defaults %>
+  <%= javascript_include_tag 'jquery.form', 'jquery.observe_field', 'rails.validations' %>
+  <%= csrf_meta_tag %>
+</head>
+<body>
+  <div id='banner'>
+    <%=  image_tag 'logo.png', :border => 0 %>
+  </div>
+ <div id="container2">
+  <div id="container1">
+    <div id="side">
+      <div id="leftNav">
+            <ul class="leftSideNav">
+              <li class="navLink <%= controller.controller_name == "customers" ? "current" : "" %>"><%= link_to "Customers", customers_url %></li>
+              <!--<li class="navLink <#%= controller.controller_name == "dogs" ? "current" : "" %>"><#%= link_to "Dogs", dogs_url %></li>-->
+              <li class="navLink <%= controller.controller_name == "appointments" ? "current" : "" %>"><%= link_to "Appointments", appointments_path %></li>
+            </ul>
+          </div>
+      <!--<div id="sideContainer2">
+        <div id="sideContainer1">
+          <div id="leftNav">
+            <ul class="leftSideNav">
+              <li class="navLink current"><#%= link_to "Customers", customers_url %></li>
+              <li class="navLink"><#%= link_to "Dogs", dogs_url %></li>
+              <li class="navLink"><#%= link_to "Appointments", "" %></li>
+            </ul>
+          </div>
+
+          <div id="rightNav">
+            <#%= render "#{controller.controller_name}/sidemenu" %>
+          </div>
+        </div>
+      </div>-->
+    </div>
+    <div id="ajax-indicator" style="display:none;"><%= image_tag "spinner.gif" %> </div>
+    <div id="main">
+
+      <div id="dialogBox" style="display:none"></div><!--** for jquery modal box **-->
+      <div id="notice" <%= ' style="display:none;"' unless flash[:notice] %>><span id="noticeContent"><%= flash[:notice] %></span></div>
+      <div id="mainContent">
+        <%= yield %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</body>
+</html>

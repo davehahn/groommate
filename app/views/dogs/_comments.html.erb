@@ -1,0 +1,19 @@
+<div style="width:100%">
+<% @dog ||= @commentable
+  if @dog.comments.empty? %>
+  <p style="width:50%;text-align:center;margin:auto;">No Comments Yet!</p>
+  <% else %>
+    <% @dog.comments.each do |c| %>
+      <div style="border:1px solid #B6A792;border-bottom:none;margin:0;padding:0;color:white;background: #054d05 url('../images/jquery_ui/ui-bg_gloss-wave_75_054d05_500x100.png') 50% 50% repeat-x;;height:19px;font-size:11px">
+        <%= image_tag "upPointer.png", :border => 0, :style => "position:relative;bottom:-6px;padding-left:20px" %>
+        <span style="padding-left:7px">
+         ...added <%= c.created_at.strftime("%b %d/%y") %>
+        </span>
+      </div>
+      <div style="min-height:20px;background:white;border:1px solid #B6A792;padding:15px;margin-bottom:6px">
+        <%= c.content %>
+      </div>
+    <% end %>
+  <% end %>
+  </div>
+

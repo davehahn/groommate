@@ -1,0 +1,40 @@
+<table cellpadding="0" cellspacing="0" class="fancyTable">
+  <tr>
+    <th><%= sortable 'fname', "First Name" %></th>
+    <th><%= sortable 'lname', "Last Name" %></th>
+    <th><%= sortable 'address' %></th>
+    <th><%= sortable 'prov', "Prov." %></th>
+    <th><%= sortable 'country' %></th>
+    <th><%= sortable 'postal_code', "Postal Code" %></th>
+    <th><%= sortable 'email' %></th>
+    <th><%= sortable 'phone' %></th>
+  </tr>
+<% if @customers.size == 0 %>
+  <tr class="odd">
+    <td colspan="8">No Customers Yet</td>
+  </tr>
+ <% else %>
+<% @customers.each do |customer| %>
+  <tr class="<%= cycle("odd","even") %> clickableRow" data-object_id="<%= customer.id %>" data-object_type="customers">
+    <td><%= customer.fname %></td>
+    <td><%= customer.lname %></td>
+    <td><%= customer.address %></td>
+    <td><%= customer.prov %></td>
+    <td><%= customer.country %></td>
+    <td><%= customer.postal_code %></td>
+    <td><%= customer.email %></td>
+    <td><%= customer.phone %></td>
+
+  </tr>
+<% end %>
+<% end %>
+  <tr>
+    <td  class="navRow" colspan="8">
+       <span style="width:15%;float:left">
+          <%= link_to((image_tag "add.png", :border => 0, :title => "Add Customer", :style =>"padding-left:10px"), new_customer_path, :class => 'dialogLink', :style=> "float:left;") %>
+        </span>
+      
+    </td>
+  </tr>
+
+</table>

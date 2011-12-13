@@ -1,0 +1,4 @@
+<ul class="rightSideNav" style="position:relative;top:0px;">
+  <li class="navLink <%= controller.action_name == 'index' ? 'current' : '' %>"  style="border-top:1px solid #9fd79f;"><%= link_to "List", customers_url %></li>
+  <li class="navLink"><%= link_to "New", new_customer_url, :class => 'dialogLink' %></li>
+</ul>

@@ -1,0 +1,16 @@
+$('#dialogBox').html("<%= escape_javascript(render "appointments/show") %> ");
+
+$.fx.speeds._default = 400;
+
+  $("#dialogBox").dialog({
+    autoOpen: true,
+    height:450 ,
+    width: 650,
+    modal: true,
+    title: "Appointment Details" ,
+    show : 'scale',
+    hide :'scale'
+  });
+
+$('.jqButton').button();
+

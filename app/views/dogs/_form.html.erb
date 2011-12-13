@@ -1,0 +1,20 @@
+<div style="height:65px;background:#eefbe9;border:1px inset #adbaa8;-moz-border-radius:6px; -webkit-border-radius:6px;padding:10px;">
+<%= form_for(@dog, :html => {:style => "width:600px;"}) do |f| %>
+  <%= f.hidden_field :customer_id %>
+  <div style="display:inline;">
+    <div style="display:inline-block">
+      <%= f.label :name,  "Dog's Name:", :style=>"font-weight:bold" %><br />
+      <%= f.text_field :name ,:size => 20%>
+    </div>
+    <div style="display:inline-block;">
+      <%= f.label :breed, "Breed:", :style=>"font-weight:bold;" %><br />
+      <%= f.text_field :breed%>
+    </div>
+    <div style="display:inline-block;position:relative;top:0px;float:right;">
+      <%= f.submit 'Save', :class => 'jqButton', :style => "width:76px" %><br />
+      <a href="#" id="cancelEdit" class="jqButton" style="width:75px">Cancel</a>
+    </div>
+    
+  </div>
+<% end %>
+</div>

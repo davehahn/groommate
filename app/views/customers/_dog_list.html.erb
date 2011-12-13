@@ -1,0 +1,18 @@
+  <% if @customer.dogs.size == 0 %>
+  <p>
+    No Dogs setup yet! Select "New Dog" to add a dog.
+  </p>
+  <% else %>
+  <table cellpadding="0" cellspacing="0" class="fancyTable" style="width:600px">
+    <tr>
+      <th>Dog's Name</th>
+      <th>Breed</th>
+    </tr>
+    <% @customer.dogs.each do |dog| %>
+    <tr class="<%= cycle("odd","even") %> clickableRow" data-object_id="<%= dog.id %>" data-object_type="dogs">
+      <td><%=dog.name %></td>
+      <td><%= dog.breed %></td>
+    </tr>
+    <% end %>
+  </table>
+  <% end %>
