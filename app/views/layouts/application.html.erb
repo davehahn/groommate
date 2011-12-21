@@ -4,7 +4,7 @@
   <title>DogGroomer</title>
   <%= stylesheet_link_tag :all %>
   <%= javascript_include_tag :defaults %>
-  <%= javascript_include_tag 'jquery.form', 'jquery.observe_field', 'rails.validations' %>
+  <%= javascript_include_tag 'jquery.form', 'jquery.observe_field', 'rails.validations', 'weekcalender/date', 'weekcalender/jquery.weekcalendar', 'weekcalender/appointments' %>
   <%= csrf_meta_tag %>
 </head>
 <body>
@@ -16,9 +16,10 @@
     <div id="side">
       <div id="leftNav">
             <ul class="leftSideNav">
+              <li class="navLink <%= controller.controller_name == "appointments" ? "current" : "" %>"><%= link_to "Appointments", appointments_path %></li>
               <li class="navLink <%= controller.controller_name == "customers" ? "current" : "" %>"><%= link_to "Customers", customers_url %></li>
               <!--<li class="navLink <#%= controller.controller_name == "dogs" ? "current" : "" %>"><#%= link_to "Dogs", dogs_url %></li>-->
-              <li class="navLink <%= controller.controller_name == "appointments" ? "current" : "" %>"><%= link_to "Appointments", appointments_path %></li>
+              
             </ul>
           </div>
       <!--<div id="sideContainer2">

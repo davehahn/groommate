@@ -1,13 +1,16 @@
 DogGroomer::Application.routes.draw do
   resources :appointments
 
+
   resources :dogs do 
    resources :comments
   end
 
   resources :customers
 
-
+ match 'get_appointments', :to => 'appointments#get_appointments'
+ match 'drag_n_save', :to => 'appointments#drag_n_save', :via => "post"
+ match 'resize_n_save', :to => 'appointments#resize_n_save', :via=> "post"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

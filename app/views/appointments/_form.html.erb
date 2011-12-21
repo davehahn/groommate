@@ -1,27 +1,15 @@
-<%= form_for(@appointment) do |f| %>
-  <% if @appointment.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@appointment.errors.count, "error") %> prohibited this appointment from being saved:</h2>
-
-      <ul>
-      <% @appointment.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :dog_id %><br />
-    <%= f.text_field :dog_id %>
+<%= form_for Appointment.new, :validate => true do |f| %>
+ <div class="field">
+    <%= f.label :dog_id, "Appointment For?:" %><br />
+    <%= f.collection_select :dog_id, Dog.all, :id, :name %>
   </div>
   <div class="field">
-    <%= f.label :start_at %><br />
-    <%= f.datetime_select :start_at %>
+    <%= f.label :start %><br />
+    <%= f.datetime_select :start %>
   </div>
   <div class="field">
-    <%= f.label :end_at %><br />
-    <%= f.datetime_select :end_at %>
+    <%= f.label :end %><br />
+    <%= f.datetime_select :end %>
   </div>
   <div class="actions">
     <%= f.submit %>

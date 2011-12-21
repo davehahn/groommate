@@ -1,6 +1,24 @@
 $('#dialogContent').hide('fade', {}, 300, function (){
   $('#dialogContent').html("<%= escape_javascript(render "show") %>");
-  $('.jqButton').button();
+  $( ".buttonRow a:first" ).button({
+            icons: {
+                primary: "ui-icon-plusthick"
+            },
+
+             }).next().button({
+            icons: {
+                primary: "ui-icon-comment"
+            }
+        }).next().button({
+            icons: {
+                primary: "ui-icon-gear"
+            }
+        }).next().button({
+            icons: {
+                primary: "ui-icon-close",
+
+            }
+        });
   $('#dialogContent').show('fade', {}, 300);
 })
 

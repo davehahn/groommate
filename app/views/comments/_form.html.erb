@@ -3,7 +3,7 @@
 <%= form_for [@commentable, Comment.new], :html => {:style => "background:#fff;border:1px inset #adbaa8;-moz-border-radius:6px; -webkit-border-radius:6px;padding:10px;"} do |form| %>
     <%= form.label :content, "New Comment", :style=>"font-weight:bold" %>
     <%= form.text_area :content, :rows => 3, :style => "width:100%;-moz-border-radius:6px; -webkit-border-radius:6px;" %><br />
-    <p style="float:right;padding-right:0px">
+    <p style="float:right;padding-right:0px;margin-top:15px;">
       <%= form.submit "Add comment", :class => 'jqButton' %>
       <a href="#" class="jqButton" id="cancelLink">Cancel</a>
     </p>

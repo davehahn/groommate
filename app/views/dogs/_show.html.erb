@@ -1,5 +1,5 @@
 <div  id="dogDetails" style="">
-<h2 style="margin:0px;text-align:center"><%= @dog.name %> - <%= @dog.breed %>  </h2>
+<h2 style="margin:0px;text-align:center;"><b><%= @dog.name %> - <%= @dog.breed %></b>  - (<%= @dog.comments.size %> Comments)   </h2>
 </div>
 
 <div id="comments" style="background:#eefbe9;border:1px inset #adbaa8;-moz-border-radius:6px; -webkit-border-radius:6px;padding:10px;width:600px;margin:10px auto 0 auto;max-height:150px;overflow-y:auto ">
@@ -9,8 +9,9 @@
 
 <div class="buttonContainer" style="left:10px !important">
     <div class="buttonRow">
-      <%= link_to "New Comment", new_dog_comment_path(@dog), :class => 'jqButton ajaxLink', :id => 'newCommentLink' %>
-      <%= link_to "Edit Dog Details", edit_dog_path(@dog), :class => 'jqButton ajaxLink', :id => 'editLink' %>
+      <%= link_to "Appointment", appointments_path(:dog => @dog.id), :id => 'newAppointmentLink', :style => "float:left" %>
+      <%= link_to "New Comment", new_dog_comment_path(@dog), :class => 'ajaxLink', :id => 'newCommentLink' %>
+      <%= link_to "Edit Dog Details", edit_dog_path(@dog), :class => 'ajaxLink', :id => 'editLink' %>
       <%= link_to "Cancel", @dog.customer, :class => 'jqButton ajaxLink' %>
     </div>
   </div>

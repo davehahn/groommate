@@ -9,6 +9,10 @@ class Customer < ActiveRecord::Base
     "#{self.lname}, #{self.fname}"
   end
 
+  def forward_name
+    "#{self.fname} #{self.lname}"
+  end
+
   def self.conditions_by_like(value, *columns)
     columns = self.columns if columns.size==0
     columns = columns[0] if columns[0].kind_of?(Array)

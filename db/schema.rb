@@ -14,8 +14,8 @@ ActiveRecord::Schema.define(:version => 20111210232632) do
 
   create_table "appointments", :force => true do |t|
     t.integer  "dog_id"
-    t.datetime "starts_at"
-    t.datetime "ends_at"
+    t.datetime "start"
+    t.datetime "end"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

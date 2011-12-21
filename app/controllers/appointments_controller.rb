@@ -2,14 +2,33 @@ class AppointmentsController < ApplicationController
   # GET /appointments
   # GET /appointments.xml
   def index
-    @date = Time.parse("#{params[:start_date]} || Time.now.utc")
-    @start_date = Date.new(@date.year, @date.month, @date.day)
-    @appointments = Appointment.find(:all, :conditions => ['starts_at between ? and ?', @start_date, @start_date + 7])
-    
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @appointments }
+    @dog = Dog.find(params[:dog], :include => :customer)
+  end
+
+  def get_appointments
+    start_date = params[:start_date].to_date
+    end_date = params[:end_date].to_date
+    range = start_date..end_date
+    @appointments = Appointment.where(:start => range)
+    events = []
+    @appointments.each do |event|
+      events << { :id => event.id, :start => event.start.strftime('%Y-%m-%d %H:%M:%S'), :end => event.end.strftime('%Y-%m-%d %H:%M:%S'), :title => "<b>#{event.dog.customer.forward_name}</b> <br /> #{event.dog.name}-#{event.dog.breed}"}
     end
+    respond_to do |format|
+      format.js { render :json => events}
+    end
+  end
+
+  def drag_n_save
+    appointment = Appointment.find(params[:id])
+    appointment.update_attributes(:start => params[:start_date].to_time, :end => params[:end_date].to_time)
+    render :nothing => true
+  end
+
+  def resize_n_save
+    appointment = Appointment.find(params[:id])
+    appointment.update_attributes(:end => params[:end_date].to_time)
+    render :nothing => true
   end
 
   # GET /appointments/1

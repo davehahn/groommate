@@ -2,8 +2,8 @@ class CreateAppointments < ActiveRecord::Migration
   def self.up
     create_table :appointments do |t|
       t.integer :dog_id
-      t.datetime :starts_at
-      t.datetime :ends_at
+      t.datetime :start
+      t.datetime :end
 
       t.timestamps
     end
