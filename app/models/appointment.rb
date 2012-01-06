@@ -1,3 +1,6 @@
-class Appointment < ActiveRecord::Base
+class Appointment < ActiveRecord::Base  
+
   belongs_to :dog
+  
+
 end

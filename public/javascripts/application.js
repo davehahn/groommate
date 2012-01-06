@@ -17,6 +17,17 @@ jQuery.fn.getWithAjax = function(){
  $(function(){  
    $('a.dialogLink, a.ajaxLink').getWithAjax();
    $('.clickableRow').live('click', clickableRowHandler);
+   $('a.navLink').click(function(event){
+       var $link = $(this);
+       event.preventDefault();
+       $('#ajax-indicator').show();
+		   $.get(this.href,{},function(response){
+		 	   $('#response').html(response)
+         $('li.navLink').removeClass("current");         
+         $link.parent().addClass("current");
+         $('#ajax-indicator').hide();
+		    })
+     });
 })
 
 function clickableRowHandler(){

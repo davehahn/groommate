@@ -1,5 +1,6 @@
 DogGroomer::Application.routes.draw do
-  resources :appointments
+
+  resources :appointments 
 
 
   resources :dogs do 
@@ -11,6 +12,10 @@ DogGroomer::Application.routes.draw do
  match 'get_appointments', :to => 'appointments#get_appointments'
  match 'drag_n_save', :to => 'appointments#drag_n_save', :via => "post"
  match 'resize_n_save', :to => 'appointments#resize_n_save', :via=> "post"
+ match 'find_dog', :to => 'appointments#search_for_dog'
+ match 'new_appointment', :to => 'appointments#new'
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -60,7 +65,7 @@ DogGroomer::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => "welcome#index"
+   root :to => "appointments#index"
 
   # See how all your routes lay out with "rake routes"
 

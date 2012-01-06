@@ -9,6 +9,7 @@ gem 'mysql2', '~> 0.2.11'
 gem 'jquery-rails'
 gem 'rack', '1.2.1'
 gem 'client_side_validations'
+gem 'rails3-jquery-autocomplete'
 
 # Use unicorn as the web server
 # gem 'unicorn'

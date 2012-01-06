@@ -1,1 +1,8 @@
-$('#customer_list').html("<%= escape_javascript(render "list_table") %>");
+<% if @render_all %>
+  $('#mainContent').html("<%= escape_javascript(render "customers/index") %>");
+  initFancyTable();
+  $('ul#.token-input-list').remove();
+  $('input#appointment_dog_id').css("display", "block");
+<% else %>
+  $('#customer_list').html("<%= escape_javascript(render "list_table") %>");
+<% end %>

@@ -1,8 +1,18 @@
-class AppointmentsController < ApplicationController
+class AppointmentsController < ApplicationController  
+
   # GET /appointments
   # GET /appointments.xml
   def index
-    @dog = Dog.find(params[:dog], :include => :customer)
+    @dog = Dog.find(params[:dog], :include => :customer)if params[:dog]
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+
+  def search_for_dog
+    dogs = params[:q].blank? ? Dog.all : Dog.search(params[:q])
+    render :json => dogs.map{|d| {:id => d.id, :name => "<b>#{d.customer.forward_name}</b><br />#{d.name} - #{d.breed}"}}
   end
 
   def get_appointments
@@ -11,8 +21,10 @@ class AppointmentsController < ApplicationController
     range = start_date..end_date
     @appointments = Appointment.where(:start => range)
     events = []
+    unless @appointments.empty?
     @appointments.each do |event|
       events << { :id => event.id, :start => event.start.strftime('%Y-%m-%d %H:%M:%S'), :end => event.end.strftime('%Y-%m-%d %H:%M:%S'), :title => "<b>#{event.dog.customer.forward_name}</b> <br /> #{event.dog.name}-#{event.dog.breed}"}
+    end
     end
     respond_to do |format|
       format.js { render :json => events}
@@ -46,10 +58,11 @@ class AppointmentsController < ApplicationController
   # GET /appointments/new.xml
   def new
     @appointment = Appointment.new
+    @start_date = params[:start_date].to_date
 
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render :xml => @appointment }
+      format.js  {  }
     end
   end
 
@@ -61,12 +74,13 @@ class AppointmentsController < ApplicationController
   # POST /appointments
   # POST /appointments.xml
   def create
-    @appointment = Appointment.new(params[:appointment])
-
+   
+    @appointment = Appointment.new(:dog_id => params[:appointment][:dog_id], :start => params[:appointment][:start].to_time, :end => params[:appointment][:end].to_time)
+   
     respond_to do |format|
       if @appointment.save
         format.html { redirect_to(@appointment, :notice => 'Appointment was successfully created.') }
-        format.xml  { render :xml => @appointment, :status => :created, :location => @appointment }
+        format.js { render :nothing => true}
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @appointment.errors, :status => :unprocessable_entity }

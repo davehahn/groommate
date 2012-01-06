@@ -1,26 +1,4 @@
-<div class="heading">
-<div id="hcontainer2">
-  <div id="hcontainer1">
-    <div id="title"><span style="position:relative;top:5px;">Customers</span></div>
-    <div id="main_title">
-      <span style="position:relative;float:right;bottom:0px;padding-right:10px;">
-        <% form_tag customers_path, :method => 'get', :id => 'searchForm' do %>
-          <p>
-            <%= hidden_field_tag :direction, params[:direction] %>
-            <%= hidden_field_tag :sort, params[:sort] %>
-            <%= text_field_tag :search, params[:search], :id => "searchField", :style=> "height:14px;" %>
-            <%= submit_tag "Search", :name => nil, :type => :image, :src => "/images/search.png", :style => "position:relative;top:6px;left:4px" %>
-          </p>
-        <% end %>
-      </span>
-    </div>
-  </div>
-</div>
-</div>
-<br />
-<div id="customer_list">
-  <%= render 'list_table' %>
-</div>
+<%= render 'index' %>
 <script type="text/javascript">
   $(function(){
     initFancyTable();

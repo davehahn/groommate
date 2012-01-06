@@ -1,7 +1,0 @@
- <%= weekly_links(:date => @date) %>
-<%= weekly_calendar(@appointments, :date => @date) do |w| %>
-  <% w.week(:business_hours => params[:business_hours]) do |appointment,truncate| %>
-    <%= appointment.starts_at.strftime('%I:%M%p') %>
-    <%= link_to appointment.dog.name, appointment_path(appointment) %>
-  <% end -%>
-<% end -%>

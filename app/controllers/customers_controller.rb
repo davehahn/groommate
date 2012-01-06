@@ -9,6 +9,7 @@ class CustomersController < ApplicationController
       conditions = "(#{Customer.conditions_by_like(params[:search])})"
     else
       conditions = ""
+      @render_all = :true
     end
 
     @customers = Customer.where(conditions).order("#{sort_column[1]} #{sort_direction}")

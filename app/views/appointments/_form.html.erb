@@ -1,17 +1,27 @@
-<%= form_for Appointment.new, :validate => true do |f| %>
- <div class="field">
-    <%= f.label :dog_id, "Appointment For?:" %><br />
-    <%= f.collection_select :dog_id, Dog.all, :id, :name %>
-  </div>
-  <div class="field">
-    <%= f.label :start %><br />
-    <%= f.datetime_select :start %>
-  </div>
-  <div class="field">
-    <%= f.label :end %><br />
-    <%= f.datetime_select :end %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+<form accept-charset="UTF-8" action="/appointments" class="new_appointment" id="new_appointment" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓"><input name="authenticity_token" type="hidden" value="tgxlj3XpN1oxhDnMo9zukdYaWVCIHlPu5ETRLdiE75Q="></div>
+
+			<ul>
+				<li>
+					<span>Date: January 05, 2012 </span>
+				</li>
+        <li class="">
+
+          <input id="appointment_dog_id" name="appointment[dog_id]" size="30" type="text" style="display: none; " />
+        </li>
+				<li>
+					<label for="start">Start Time: </label><select name="start"><option value="">Select Start Time</option></select>
+				</li>
+				<li>
+					<label for="end">End Time: </label><select name="end"><option value="">Select End Time</option></select>
+				</li>
+				<!--<li>
+					<label for="title">Title: </label><input type="text" name="title" />
+				</li>
+				<li>
+					<label for="body">Body: </label><textarea name="body"></textarea>
+				</li>-->
+			</ul>
+      <input id="appointment_submit" name="commit" type="submit" value="save" />
+     
+</form>
+			
