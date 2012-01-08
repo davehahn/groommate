@@ -41,7 +41,6 @@ function setupCalendar() {
          
          var startField = $dialogContent.find("select[name='appointment[start]']").val(calEvent.start);
          var endField = $dialogContent.find("select[name='appointment[end]']").val(calEvent.end);
-         console.log(startField)
          var bodyField = $dialogContent.find("textarea[name='body']");        
           
          $dialogContent.dialog({
