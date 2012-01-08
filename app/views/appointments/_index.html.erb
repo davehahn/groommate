@@ -1,11 +1,8 @@
+<div id="dogContainer">
 <% if @dog %>
-<% token_name = "<b>#{  @dog.customer.forward_name }\</b><br />#{ @dog.name } - #{@dog.breed }" %>
-<div id="dog" data-id_token="<%= @dog.id %>"  data-name_token="<%= token_name %>" style="width:35%;margin:auto auto 10px auto;padding:8px 5px;color:#00002A;background:#CCCCE8;border:2px solid #4D4DAE;-moz-border-radius:6px;-webkit-border-radius:6px">
-Create  Appointment for <b><%= @dog.customer.forward_name %></b> and his dog <b><%= @dog.name %> </b>
-<a href="#" id="cancelCreateLink" style="float:right;margin-right:15px;text-decoration:none">Cancel</a>
-</div>
+  <%= render 'pre_populated_dog' %>
 <% end %>
-
+</div>
 	<div id='calendar' style="width:98%;margin:auto"></div>
 
 	

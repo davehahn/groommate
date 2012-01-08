@@ -43,32 +43,8 @@
 
       <div id="dialogBox" style="display:none"></div><!--** for jquery modal box **-->
       <div id="notice" <%= ' style="display:none;"' unless flash[:notice] %>><span id="noticeContent"><%= flash[:notice] %></span></div>
-      <div id="event_edit_container">
-		<form accept-charset="UTF-8" action="/appointments" class="new_appointment" id="new_appointment" method="post">
-      <div style="margin:0;padding:0;display:inline">
-        <input name="utf8" type="hidden" value="✓" />
-        <input name="authenticity_token" type="hidden" value="tgxlj3XpN1oxhDnMo9zukdYaWVCIHlPu5ETRLdiE75Q=" />
-      </div>
-			<input type="hidden" />
-			<ul>
-				<li style="width:100%;text-align:center">
-					<span style="font-weight:bold;font-size: 1.2em">Date: </span><span class="date_holder" style="font-size: 1.2em"></span>
-				</li>
-        <br />
-        <li class="">
-          <input id="appointment_dog_id" name="appointment[dog_id]" size="30" type="text" style="display: none; " />
-        </li>
-				<li>
-					<label for="start">Start Time: </label><select name="appointment[start]"><option value="">Select Start Time</option></select>
-				</li>
-				<li>
-					<label for="end">End Time: </label><select name="appointment[end]"><option value="">Select End Time</option></select>
-				</li>
+      <div id="event_edit_container"></div>
 
-
-			</ul>
-		</form>
-	</div>
       <div id="mainContent">
         <%= yield %>
       </div>

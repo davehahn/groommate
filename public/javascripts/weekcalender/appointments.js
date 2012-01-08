@@ -1,9 +1,10 @@
-function setupCalendar() {   
-                    
+function setupCalendar() {
+ 
    var $calendar = $('#calendar');
-   var id = 10;  
   
+   
    $calendar.weekCalendar({
+      
       displayOddEven:true,
       timeslotsPerHour : 4,
       allowCalEventOverlap : true,
@@ -33,12 +34,14 @@ function setupCalendar() {
       resizable : function(calEvent, $event) {
          return calEvent.readOnly != true;
       },
-      eventNew : function(calEvent, $event) {         
-         var $dialogContent = $("#event_edit_container");         
-         resetForm($dialogContent);
+      eventNew : function(calEvent, $event) {
+          $.get('new_appointment', {}, function(){
+
+         var $dialogContent = $("#dialogBox");
+         
          var startField = $dialogContent.find("select[name='appointment[start]']").val(calEvent.start);
          var endField = $dialogContent.find("select[name='appointment[end]']").val(calEvent.end);
-         
+         console.log(startField)
          var bodyField = $dialogContent.find("textarea[name='body']");        
           
          $dialogContent.dialog({
@@ -52,28 +55,30 @@ function setupCalendar() {
                $dialogContent.dialog("destroy");
                $dialogContent.hide();               
                $('#calendar').weekCalendar("removeUnsavedEvents");
-                 $('input#appointment_dog_id').tokenInput("clear");
-               /* REALLY CRAZY HACK TO HIDE TOKEN BOX AFTER CREATE */
-               $('.token-input-dropdown').css("display", "none");
+               $('input#appointment_dog_id').tokenInput("clear");
+               $dialogContent.html("");
+               /* REALLY CRAZY HACK TO REMOVE TOKEN BOX AFTER CREATE */
+               $('.token-input-dropdown').remove();
             },
             buttons: {
                save : function() {
                    if($('li.token-input-token').length > 0){                       
                       var title = $('li.token-input-token p').html();                      
-                      $('#new_appointment').ajaxSubmit();
-                      calEvent.id = id;
-                      id++;
+                      $('#new_appointment').ajaxSubmit({success: function(responseText){
+                      calEvent.id = parseInt(responseText);                      
                       calEvent.start = new Date(startField.val());
                       calEvent.end = new Date(endField.val());
                       calEvent.title = title;
                       calEvent.body = bodyField.val();
                       $calendar.weekCalendar("removeUnsavedEvents");
                       $calendar.weekCalendar("updateEvent", calEvent);
-                      $dialogContent.dialog("close");                      
+                      $dialogContent.dialog("close");
                        if($('#dog').length > 0 ){
                         $('#dog').remove();
                        }
                        return false;
+                      }});
+                      
                    }else{
                       alert("Please Select a Customer/Dog");
                       return false;
@@ -87,7 +92,7 @@ function setupCalendar() {
          
          $dialogContent.find(".date_holder").text($calendar.weekCalendar("formatDate", calEvent.start));
          setupStartAndEndTimeFields(startField, endField, calEvent, $calendar.weekCalendar("getTimeslotTimes", calEvent.start));
-  
+          });
       },
       eventDrop : function(calEvent, $event) {
         $.ajax({url: 'drag_n_save',
@@ -108,51 +113,49 @@ function setupCalendar() {
          if (calEvent.readOnly) {
             return;
          }
-         alert(" Please Be Patient!! Edit Function in Progress")
-        /*
-         var $dialogContent = $("#event_edit_container");
-         resetForm($dialogContent);
-         var startField = $dialogContent.find("select[name='start']").val(calEvent.start);
-         var endField = $dialogContent.find("select[name='end']").val(calEvent.end);
+         $.get('appointment_details', {id: calEvent.id},function(){
+                
+         })
+         var $dialogContent = $("#dialogBox");
+         
+         /* var startField = $dialogContent.find("select[name='appointment[start]']").val(calEvent.start);
+         console.log(startField)
+         var endField = $dialogContent.find("select[name='appointment[end]']").val(calEvent.end);
          var titleField = $dialogContent.find("input[name='title']").val(calEvent.title);
          var bodyField = $dialogContent.find("textarea[name='body']");
          bodyField.val(calEvent.body);
-
+         */
          $dialogContent.dialog({
             modal: true,
-            title: "Edit - " + calEvent.title,
+            title: "Appointment Details",
             close: function() {
                $dialogContent.dialog("destroy");
-               $dialogContent.hide();
+               $dialogContent.html("");
                $('#calendar').weekCalendar("removeUnsavedEvents");
             },
             buttons: {
-               save : function() {
-
-                  calEvent.start = new Date(startField.val());
-                  calEvent.end = new Date(endField.val());
-                  calEvent.title = titleField.val();
-                  calEvent.body = bodyField.val();
-
-                  $calendar.weekCalendar("updateEvent", calEvent);
-                  $dialogContent.dialog("close");
+               "reschedule" : function(){
+                 $.post('reschedule_appointment', {id: calEvent.id}, null, "script");
+                 $calendar.weekCalendar("removeEvent", calEvent.id);
+                 $dialogContent.dialog("close");
                },
                "delete" : function() {
+                   $.post('destroy_appointment', {id: calEvent.id, _method: 'delete'}, null, "script");
                   $calendar.weekCalendar("removeEvent", calEvent.id);
                   $dialogContent.dialog("close");
                },
-               cancel : function() {
+               "close" : function() {
                   $dialogContent.dialog("close");
                }
             }
          }).show();
 
-         var startField = $dialogContent.find("select[name='start']").val(calEvent.start);
-         var endField = $dialogContent.find("select[name='end']").val(calEvent.end);
+           var startField = $dialogContent.find("select[name='appointment[start]']").val(calEvent.start);
+         var endField = $dialogContent.find("select[name='appointment[end]']").val(calEvent.end);
          $dialogContent.find(".date_holder").text($calendar.weekCalendar("formatDate", calEvent.start));
          setupStartAndEndTimeFields(startField, endField, calEvent, $calendar.weekCalendar("getTimeslotTimes", calEvent.start));
          $(window).resize().resize(); //fixes a bug in modal overlay size ??
-        */
+        
       },
       eventMouseover : function(calEvent, $event) {
       },
@@ -189,7 +192,6 @@ function getEventData(start,end) {
         events : arr1
       };
    }
-
 
    /*
     * Sets up the start and end time fields in the calendar event
@@ -267,7 +269,7 @@ if($('#dog')){
    $('input#appointment_dog_id').tokenInput('find_dog',{            
             tokenLimit: 1,
             hintText: "Find a Customer/Dog",
-            prePopulate: populate()
+            prePopulate: populate()          
           })
   }else{
       populateAutoComplete();

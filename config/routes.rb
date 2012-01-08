@@ -14,6 +14,9 @@ DogGroomer::Application.routes.draw do
  match 'resize_n_save', :to => 'appointments#resize_n_save', :via=> "post"
  match 'find_dog', :to => 'appointments#search_for_dog'
  match 'new_appointment', :to => 'appointments#new'
+ match 'reschedule_appointment', :to => 'appointments#reschedule'
+ match "appointment_details", :to => "appointments#show"
+ match "destroy_appointment", :to => "appointments#destroy"
 
 
   # The priority is based upon order of creation:

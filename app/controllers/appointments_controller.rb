@@ -3,6 +3,8 @@ class AppointmentsController < ApplicationController
   # GET /appointments
   # GET /appointments.xml
   def index
+    date = Time.now + 14.days
+    @date = date.strftime('%Y-%m-%d %H:%M:%S')
     @dog = Dog.find(params[:dog], :include => :customer)if params[:dog]
     respond_to do |format|
       format.html
@@ -58,8 +60,6 @@ class AppointmentsController < ApplicationController
   # GET /appointments/new.xml
   def new
     @appointment = Appointment.new
-    @start_date = params[:start_date].to_date
-
     respond_to do |format|
       format.html # new.html.erb
       format.js  {  }
@@ -67,20 +67,26 @@ class AppointmentsController < ApplicationController
   end
 
   # GET /appointments/1/edit
-  def edit
-    @appointment = Appointment.find(params[:id])
+  def reschedule
+    @appointment = Appointment.find(params[:id], :include => :dog)
+    @dog = @appointment.dog
+    @appointment.destroy
+    respond_to do |format|
+      format.html # new.html.erb
+      format.js  {  }
+    end
   end
 
   # POST /appointments
   # POST /appointments.xml
   def create
    
-    @appointment = Appointment.new(:dog_id => params[:appointment][:dog_id], :start => params[:appointment][:start].to_time, :end => params[:appointment][:end].to_time)
+   @appointment = Appointment.new(:dog_id => params[:appointment][:dog_id], :start => params[:appointment][:start].to_time, :end => params[:appointment][:end].to_time)
    
     respond_to do |format|
       if @appointment.save
         format.html { redirect_to(@appointment, :notice => 'Appointment was successfully created.') }
-        format.js { render :nothing => true}
+        format.js { render :json => @appointment.id}
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @appointment.errors, :status => :unprocessable_entity }
@@ -112,7 +118,7 @@ class AppointmentsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to(appointments_url) }
-      format.xml  { head :ok }
+      format.js {render :nothing => true}
     end
   end
 end
