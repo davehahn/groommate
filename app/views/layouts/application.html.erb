@@ -11,6 +11,7 @@
   <div id='banner'>
     <%=  image_tag 'logo.png', :border => 0 %>
   </div>
+  <div id="ajax-indicator" style="display:none;"><%= image_tag "spinner1.gif" %> </div>
  <div id="container2">
   <div id="container1">
     <div id="side">
@@ -38,10 +39,12 @@
         </div>
       </div>-->
     </div>
-    <div id="ajax-indicator" style="display:none;"><%= image_tag "spinner.gif" %> </div>
+    
     <div id="main">
 
-      <div id="dialogBox" style="display:none"></div><!--** for jquery modal box **-->
+      <div id="dialogBox" style="display:none">
+        
+      </div><!--** for jquery modal box **-->
       <div id="notice" <%= ' style="display:none;"' unless flash[:notice] %>><span id="noticeContent"><%= flash[:notice] %></span></div>
       <div id="event_edit_container"></div>
 

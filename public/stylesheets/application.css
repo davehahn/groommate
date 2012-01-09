@@ -38,7 +38,7 @@ div#banner img {
 #ajax-indicator {
     position: absolute; /* fixed not supported by IE */
     background-color:transparent;
-
+    z-index:1005 !important;
     top:35%;
     left:40%;
     width:20%;

@@ -1,14 +1,16 @@
  jQuery.ajaxSetup({
-   'beforeSend': function (xhr) {xhr.setRequestHeader("Accept", "text/javascript")}
+   'beforeSend': function (xhr) {xhr.setRequestHeader("Accept", "text/javascript");
+                                 $('#ajax-indicator').show();},
+   'complete': function() {$('#ajax-indicator').hide();}
  });
 
 jQuery.fn.getWithAjax = function(){
     this.live('click', function (event){
      event.preventDefault();
-     $('#ajax-indicator').show();
+     
 		    $.get(this.href,{},function(response){
 		 	   $('#response').html(response)
-         $('#ajax-indicator').hide();
+        
 		    })
      });
  };
@@ -20,12 +22,12 @@ jQuery.fn.getWithAjax = function(){
    $('a.navLink').click(function(event){
        var $link = $(this);
        event.preventDefault();
-       $('#ajax-indicator').show();
+     
 		   $.get(this.href,{},function(response){
 		 	   $('#response').html(response)
          $('li.navLink').removeClass("current");         
          $link.parent().addClass("current");
-         $('#ajax-indicator').hide();
+     
 		    })
      });
 })
@@ -33,17 +35,17 @@ jQuery.fn.getWithAjax = function(){
 function clickableRowHandler(){
     var objId = $(this).data('object_id');
     var objType = $(this).data('object_type')
-    $('#ajax-indicator').show();
+    
 		    $.get(objType+"/"+objId,{},function(response){
 		 	   $('#response').html(response)
-         $('#ajax-indicator').hide();
+        
 		    })
   }
 
   function initFancyTable() {
     $('#searchForm').submit(function () {
-     $('#ajax-indicator').show();
-     $.get(this.action, $(this).serialize(), function(){$('#ajax-indicator').hide();}, 'script');
+     
+     $.get(this.action, $(this).serialize(), null, 'script');
      return false;
    });
    $('#searchField').observe_field(0.5,function(){

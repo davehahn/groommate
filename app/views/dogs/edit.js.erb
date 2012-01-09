@@ -9,7 +9,7 @@ $('#dogDetails').hide('drop',{},400, function(){
   });
   $('#cancelEdit').bind('click', function (){
   $('#dogDetails').hide('scale',{},400, function(){
-    $('#dogDetails').html("<h2 style='text-align:center'><%= @dog.name %> - <%= @dog.breed %></h2>");
+    $('#dogDetails').html("<h2 style='margin:0px;text-align:center;'><b><%= @dog.name %> - <%= @dog.breed %></b>  - (<%= @dog.comments.size %> Comments)   </h2>");
     $('#dogDetails').show('drop',{},400);
       $('a#editLink').show();
     });
