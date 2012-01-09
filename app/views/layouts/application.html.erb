@@ -8,14 +8,15 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
-  <div id='banner'>
-    <%=  image_tag 'logo.png', :border => 0 %>
-  </div>
+
   <div id="ajax-indicator" style="display:none;"><%= image_tag "spinner1.gif" %> </div>
  <div id="container2">
   <div id="container1">
     <div id="side">
       <div id="leftNav">
+        <div class="sideLogo" style="text-align:center;padding-top:10px;">
+          <%= image_tag 'groomate.png' %>
+        </div>
             <ul class="leftSideNav">
               <li class="navLink <%= controller.controller_name == "appointments" ? "current" : "" %>"><%= link_to "Appointments", appointments_path, :class =>  'navLink' %></li>
               <li class="navLink <%= controller.controller_name == "customers" ? "current" : "" %>"><%= link_to "Customers", customers_url, :class => 'navLink' %></li>
@@ -23,6 +24,10 @@
               
             </ul>
           </div>
+      <div id="crLogo" style="text-align: center;color:#dcffdc;font-size:0.8em">
+        <%= image_tag 'crlogo.jpg' %><br />
+        Powered by<br /><b> <a href="http://crimsonroad.ca" style="text-decoration:none;color:#dcffdc">CrimsonRoad Development</a></b><br />
+      </div>
       <!--<div id="sideContainer2">
         <div id="sideContainer1">
           <div id="leftNav">
