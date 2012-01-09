@@ -255,12 +255,7 @@ function getEventData(start,end) {
 //cancel button if we have a dog object to create the appointment from //
 
 if($('#dog')){
- $('#cancelCreateLink').bind('click', function(){
-     $('#dog').slideUp( function(){
-         $('#dog').remove();
-         $('input#appointment_dog_id').tokenInput("clear");
-     })
- })
+ cancel_prePopulate()
 }
 
  function initDogFinder(){
@@ -290,5 +285,14 @@ if($('#dog')){
      if(pop != null){                
        $('input#appointment_dog_id').tokenInput("add", pop[0] )
      }
+ }
+
+ function cancel_prePopulate(){
+     $('a#cancelCreateLink').bind('click', function(){
+       $('#dog').slideUp( function(){
+         $('#dog').remove();
+         $('input#appointment_dog_id').tokenInput("clear");
+      })
+    })
  }
 }

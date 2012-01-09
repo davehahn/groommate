@@ -1,1 +1,7 @@
 $('#dogContainer').html("<%= escape_javascript(render "pre_populated_dog") %>");
+$('a#cancelCreateLink').bind('click', function(){
+       $('#dog').slideUp( function(){
+         $('#dog').remove();
+         $('input#appointment_dog_id').tokenInput("clear");
+      })
+    })
