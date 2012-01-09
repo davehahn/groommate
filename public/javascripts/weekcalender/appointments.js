@@ -10,6 +10,7 @@ function setupCalendar() {
       allowCalEventOverlap : true,
       overlapEventsSeparate: true,
       firstDayOfWeek : 1,
+      defaultEventLength: 1,
       businessHours :{start: 8, end: 18, limitDisplay: true},
       daysToShow : 7,
       switchDisplay: {'1 day': 1, '3 next days': 3, 'work week': 5, 'full week': 7},
